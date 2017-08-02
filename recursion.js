@@ -45,3 +45,35 @@ function rBinarySearch(arr, val){
 
 // console.log(rBinarySearch([1,3,5,6], 4));
 // console.log(rBinarySearch([4,5,6,8,12], 5));
+
+// buggy floodFill
+
+function rFloodFill(canvas, pos, color){
+  var x = pos.x;
+  var y = pos.y;
+  var replace = canvas[y][x];
+  console.log(x,y,replace, color)
+  function helper(canvas, x, y, replace, color){
+    if(canvas[y][x] == replace){
+      canvas[y][x] = color;
+      if(y+1 < canvas.length-1){
+        helper(canvas, x, y+1, replace, color);
+      }else if(y-1 >= 0){
+        helper(canvas, x, y-1, replace, color);
+      }else if(x+1 < canvas[0].length){
+        helper(canvas, x+1, y, replace, color);
+      }else if(x-1 >= 0){
+        helper(canvas, x-1, y, replace, color);
+      }
+    }
+  }
+  return canvas;
+}
+
+canvas = [[3,2,3,4,3],
+          [2,3,3,4,0],
+          [7,3,3,5,3],
+          [6,5,3,4,1],
+          [1,2,3,3,3]];
+
+// console.log(rFloodFill(canvas, {x:2, y:2}, 1))
