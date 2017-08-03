@@ -78,3 +78,14 @@ canvas = [[3,2,3,4,3],
           [1,2,3,3,3]];
 
 // console.log(rFloodFill(canvas, {x:2, y:2}, 1))
+
+function rGCF(num1, num2){
+  var lg; var sm;
+  [lg, sm] = num1 > num2 ? [num1, num2] : [num2, num1];
+  if(lg%sm === 0){
+    return sm;
+  }
+  return rGCF(sm, lg%sm);
+}
+
+// console.log(rGCF(15,27))
