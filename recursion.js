@@ -56,17 +56,18 @@ function rFloodFill(canvas, pos, color){
   function helper(canvas, x, y, replace, color){
     if(canvas[y][x] == replace){
       canvas[y][x] = color;
-      if(y+1 < canvas.length-1){
+      if(y+1 < canvas.length){
         helper(canvas, x, y+1, replace, color);
-      }else if(y-1 >= 0){
+      }if(y-1 >= 0){
         helper(canvas, x, y-1, replace, color);
-      }else if(x+1 < canvas[0].length){
+      }if(x+1 < canvas[0].length){
         helper(canvas, x+1, y, replace, color);
-      }else if(x-1 >= 0){
+      }if(x-1 >= 0){
         helper(canvas, x-1, y, replace, color);
       }
     }
   }
+  helper(canvas, x, y, replace, color);
   return canvas;
 }
 
