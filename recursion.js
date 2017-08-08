@@ -96,17 +96,23 @@ function rBSE(str){
     return arr;
 }
 
-function binStrHelper(str, i, arr){
-    if (i >= str.length){
-        arr.push(str);
-    }else if (str[i] === "?"){
-        i++;
-        binStrHelper(str.substring(0,i-1)+0+str.substring(i), i, arr);
-        binStrHelper(str.substring(0,i-1)+1+str.substring(i), i, arr);
-    }else{
-        i++;
-        binStrHelper(str, i, arr);
-    }
+function rBSE(str){
+  var arr = [];
+  helper(str, arr, 0, '');
+  return arr;
 }
 
-// console.log(rBSE("1?1??"));
+function helper(str, arr, i, sub){
+  if(sub.length == str.length){
+    arr.push(sub);
+  }else if(str[i] == '?'){
+    i++;
+    helper(str, arr, i, sub+1);
+    helper(str, arr, i, sub+0);
+  }else{
+    i++;
+    helper(str, arr, i, sub+str[i-1]);
+  }
+}
+
+// console.log(rBSE('1?0?'));
