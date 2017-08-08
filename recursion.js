@@ -89,3 +89,24 @@ function rGCF(num1, num2){
 }
 
 // console.log(rGCF(15,27))
+
+function rBSE(str){
+    arr = [];
+    binStrHelper(str, 0, arr);
+    return arr;
+}
+
+function binStrHelper(str, i, arr){
+    if (i >= str.length){
+        arr.push(str);
+    }else if (str[i] === "?"){
+        i++;
+        binStrHelper(str.substring(0,i-1)+0+str.substring(i), i, arr);
+        binStrHelper(str.substring(0,i-1)+1+str.substring(i), i, arr);
+    }else{
+        i++;
+        binStrHelper(str, i, arr);
+    }
+}
+
+// console.log(rBSE("1?1??"));
