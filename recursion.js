@@ -116,3 +116,24 @@ function helper(str, arr, i, sub){
 }
 
 // console.log(rBSE('1?0?'));
+
+function stairs(num){
+  var arr = [];
+  function helper(str, num){
+    if(num >= 2){
+      let s = str + 2;
+      helper(s, num-2);
+    }
+    if(num >= 1){
+      let s = str + 1;
+      helper(s, num-1);
+    }
+    if(num === 0){
+      arr.push(str);
+    }
+  }
+  helper('', num);
+  return arr;
+}
+
+// console.log(stairs(4));
